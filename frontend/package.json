@@ -1,17 +1,15 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "script.js",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server . -p 3000"
   },
-  "dependencies": {
-    "nuxt": "^3.14.1592",
-    "vue": "latest",
-    "vue-router": "latest"
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }
