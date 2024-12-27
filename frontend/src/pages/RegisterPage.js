@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Box, TextField, Button, Typography } from "@mui/material";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -34,70 +35,66 @@ const RegisterPage = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Registration failed");
-      }
+      if (!response.ok) throw new Error("Registration failed");
 
-      alert("Registration successful! Please log in.");
-      setFormData({ fullName: "", email: "", password: "", confirmPassword: "" });
+      alert("Registration successful!");
     } catch (error) {
       alert(error.message);
     }
   };
 
   return (
-    <div className="container mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-4">Register</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block mb-2">Full Name</label>
-          <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-2">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-2">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-2">Confirm Password</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      minHeight="100vh"
+    >
+      <Typography variant="h4" gutterBottom>
+        Register
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit} sx={{ width: "300px" }}>
+        <TextField
+          fullWidth
+          label="Full Name"
+          name="fullName"
+          margin="normal"
+          value={formData.fullName}
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          label="Email"
+          name="email"
+          type="email"
+          margin="normal"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          label="Password"
+          name="password"
+          type="password"
+          margin="normal"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          label="Confirm Password"
+          name="confirmPassword"
+          type="password"
+          margin="normal"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+        />
+        <Button type="submit" variant="contained" color="primary" fullWidth>
           Register
-        </button>
-      </form>
-    </div>
+        </Button>
+      </Box>
+    </Box>
   );
 };
 
